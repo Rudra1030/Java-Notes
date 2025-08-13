@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binomial Coefficient in Java</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border-left: 4px solid #4f46e5;
+        }
+        .code-block .comment {
+            color: #64748b;
+        }
+        .code-block .keyword {
+            color: #93c5fd;
+        }
+        .code-block .number {
+            color: #fbbf24;
+        }
+        .code-block .string {
+            color: #a5b4fc;
+        }
+        .formula {
+            background-color: #eef2ff;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #312e81;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Binomial Coefficient <span class="text-indigo-600">(nCr)</span> in Java</h1>
+            <p class="text-lg text-gray-600 mt-2">Finding the number of ways to choose 'r' items from a set of 'n'.</p>
+        </header>
+
+        <!-- What is it? Card -->
+        <div class="card mb-8">
+            <div class="flex justify-center">
+                 <svg class="icon text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 text-center">What is a Binomial Coefficient?</h2>
+            <p class="text-gray-600 mt-4 text-center">It tells you how many different ways you can choose a smaller set of items (`r`) from a larger set (`n`), where the order of selection doesn't matter.</p>
+            <p class="text-gray-600 mt-2 text-center"><strong>Example:</strong> How many ways can you choose 2 players from a team of 5? This is written as <strong>5C2</strong>.</p>
+        </div>
+
+        <!-- The Formula Card -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">The Mathematical Formula</h2>
+            <div class="formula">
+                <p>nCr = n! / (r! * (n-r)!)</p>
+            </div>
+             <p class="text-gray-600 mt-4 text-center">Where `n!` (n factorial) is `n × (n-1) × ... × 1`.</p>
+        </div>
+
+
+        <!-- Java Code Section -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Java Program Implementation</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <!-- Code Block -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">The Code:</h3>
+                    <div class="code-block">
+                        <pre><code><span class="keyword">public class</span> Binomial {
+
+    <span class="comment">// Helper function to calculate factorial</span>
+    <span class="keyword">public static int</span> factorial(<span class="keyword">int</span> n) {
+        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;
+        <span class="keyword">int</span> fact = <span class="number">1</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {
+            fact = fact * i;
+        }
+        <span class="keyword">return</span> fact;
+    }
+
+    <span class="comment">// Function to calculate nCr</span>
+    <span class="keyword">public static int</span> binCoeff(<span class="keyword">int</span> n, <span class="keyword">int</span> r) {
+        <span class="keyword">int</span> n_fact = factorial(n);
+        <span class="keyword">int</span> r_fact = factorial(r);
+        <span class="keyword">int</span> nmr_fact = factorial(n - r);
+
+        <span class="keyword">int</span> result = n_fact / (r_fact * nmr_fact);
+        <span class="keyword">return</span> result;
+    }
+
+    <span class="keyword">public static void</span> main(String[] args) {
+        <span class="keyword">int</span> n = <span class="number">5</span>;
+        <span class="keyword">int</span> r = <span class="number">2</span>;
+        System.out.println(<span class="string">"C("</span> + n + <span class="string">", "</span> + r + <span class="string">") = "</span> + binCoeff(n, r));
+    }
+}</code></pre>
+                    </div>
+                </div>
+                <!-- Code Breakdown -->
+                <div>
+                     <h3 class="font-semibold text-lg mb-2">Code Logic:</h3>
+                     <p class="text-gray-600 mb-4">To find the binomial coefficient, we simply follow the formula:</p>
+                     <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                        <li>Calculate the factorial of `n`.</li>
+                        <li>Calculate the factorial of `r`.</li>
+                        <li>Calculate the factorial of `n-r`.</li>
+                        <li>Divide the result of step 1 by the product of steps 2 and 3.</li>
+                     </ol>
+                </div>
+            </div>
+             <!-- Output Section -->
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Example Calculation (n=5, r=2)</h3>
+                <div class="code-block w-full md:w-2/3 mx-auto text-left bg-gray-800 text-green-400">
+                    <pre><code>C(5, 2) = 10</code></pre>
+                </div>
+                <p class="text-gray-600 mt-2">So, there are 10 different ways to choose 2 players from a team of 5.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

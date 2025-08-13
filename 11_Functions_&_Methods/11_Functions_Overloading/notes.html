@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Overloading in Java</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+        .code-block .comment {
+            color: #64748b;
+        }
+        .code-block .keyword {
+            color: #93c5fd;
+        }
+        .code-block .string {
+            color: #a5b4fc;
+        }
+        .code-block .error {
+            color: #f87171;
+        }
+        .story-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Function <span class="text-sky-500">Overloading</span> in Java</h1>
+            <p class="text-lg text-gray-600 mt-2">One Name, Many Talents</p>
+        </header>
+
+        <!-- The Story Card -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">The Story: The Smart Calculator</h2>
+            <div class="story-box">
+                <p class="text-gray-700">Imagine a calculator with just one button called `add`. This button is so smart it knows what to do based on what you give it. If you give it two numbers, it adds them. If you give it three numbers, it adds all three. If you give it decimal numbers, it adds those too! This is exactly how function overloading works in Java.</p>
+            </div>
+        </div>
+
+        <!-- Definition Card -->
+        <div class="card mb-8 text-center">
+            <h2 class="text-2xl font-bold text-gray-800">What is Function Overloading?</h2>
+            <p class="text-gray-600 mt-2">It's the ability to have **multiple functions with the same name** in the same class, as long as they have **different parameters**. Java is smart enough to call the correct one based on the arguments you provide.</p>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- Type 1: Different Number of Parameters -->
+            <div class="card">
+                <div class="flex justify-center">
+                    <svg class="icon text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" /></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">Type 1: Different Number of Parameters</h3>
+                <p class="text-gray-600 mb-4">You can have methods with the same name but a different count of arguments.</p>
+                <div class="code-block">
+                    <pre><code><span class="comment">// Adds two numbers</span>
+<span class="keyword">int</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { ... }
+
+<span class="comment">// Adds three numbers</span>
+<span class="keyword">int</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c) { ... }</code></pre>
+                </div>
+            </div>
+
+            <!-- Type 2: Different Types of Parameters -->
+            <div class="card">
+                 <div class="flex justify-center">
+                    <svg class="icon text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h18" /></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">Type 2: Different Data Types of Parameters</h3>
+                <p class="text-gray-600 mb-4">You can also have methods with the same name and same number of arguments, but their data types are different.</p>
+                <div class="code-block">
+                    <pre><code><span class="comment">// Adds two integers</span>
+<span class="keyword">int</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { ... }
+
+<span class="comment">// Adds two doubles (decimals)</span>
+<span class="keyword">double</span> add(<span class="keyword">double</span> a, <span class="keyword">double</span> b) { ... }</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Return Type Rule Card -->
+        <div class="card mb-8 border-t-4 border-red-500">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Important Rule: Return Type Doesn't Count!</h2>
+            <p class="text-gray-600 text-center mb-4">You **cannot** overload a function just by changing its return type. The method signature (name and parameters) must be different. Java won't know which method to call if only the return type is changed.</p>
+            <div class="code-block">
+                <pre><code><span class="comment">// This is perfectly fine</span>
+<span class="keyword">int</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { <span class="keyword">return</span> a + b; }
+
+<span class="comment">// ERROR! Same name, same parameters.</span>
+<span class="error">double add(int a, int b) { return a + b; }</span>
+
+<span class="comment">// This would cause a compile-time error.</span></code></pre>
+            </div>
+        </div>
+
+
+        <!-- Putting it all Together -->
+        <div class="card">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">The Smart Calculator Code</h2>
+            <p class="text-gray-600 text-center mb-4">Here's how our calculator uses both types of overloading.</p>
+            <div class="code-block">
+<pre><code><span class="keyword">public class</span> Calculator {
+
+    <span class="comment">// Method 1: Adds two integers</span>
+    <span class="keyword">public static int</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {
+        <span class="keyword">return</span> a + b;
+    }
+
+    <span class="comment">// Method 2: Adds three integers (different number of params)</span>
+    <span class="keyword">public static int</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c) {
+        <span class="keyword">return</span> a + b + c;
+    }
+
+    <span class="comment">// Method 3: Adds two doubles (different type of params)</span>
+    <span class="keyword">public static double</span> add(<span class="keyword">double</span> a, <span class="keyword">double</span> b) {
+        <span class="keyword">return</span> a + b;
+    }
+
+    <span class="keyword">public static void</span> main(String[] args) {
+        System.out.println(<span class="string">"Adding 5 + 10 = "</span> + add(5, 10));
+        System.out.println(<span class="string">"Adding 5 + 10 + 20 = "</span> + add(5, 10, 20));
+        System.out.println(<span class="string">"Adding 5.5 + 10.5 = "</span> + add(5.5, 10.5));
+    }
+}</code></pre>
+            </div>
+             <div class="mt-4 text-center bg-gray-100 p-4 rounded-lg">
+                <h3 class="font-semibold text-gray-700">Output:</h3>
+                <pre class="text-gray-600 mt-2"><code>Adding 5 + 10 = 15
+Adding 5 + 10 + 20 = 35
+Adding 5.5 + 10.5 = 16.0</code></pre>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

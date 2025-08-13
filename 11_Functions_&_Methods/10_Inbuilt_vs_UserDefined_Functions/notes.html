@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbuilt vs. User-Defined Methods in Java</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+        .code-block .comment {
+            color: #64748b;
+        }
+        .code-block .keyword {
+            color: #93c5fd;
+        }
+        .code-block .string {
+            color: #a5b4fc;
+        }
+        .story-box {
+            background-color: #fefce8;
+            border-left: 4px solid #facc15;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Inbuilt vs. User-Defined Methods</h1>
+            <p class="text-lg text-gray-600 mt-2">A Chef's Guide to Java Methods</p>
+        </header>
+
+        <!-- The Story Card -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">The Story: Chef Java's Kitchen</h2>
+            <div class="story-box">
+                <p class="text-gray-700">Imagine you are a programmer, but let's call you "Chef Java". Your kitchen (your program) needs to perform many tasks. For some tasks, you use standard, pre-built kitchen appliances. For others, you create your own special recipes from scratch. These are the two types of methods in Java!</p>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- Inbuilt Methods Card -->
+            <div class="card">
+                <div class="flex justify-center">
+                    <svg class="icon text-teal-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">Inbuilt Methods</h3>
+                <p class="text-center text-gray-500 mb-4">(The Kitchen Appliances)</p>
+                <p class="text-gray-600 mb-4">These are ready-made methods that come with Java. You don't need to know how they work internally, just what they do and how to use them. They are like a microwave or a blender – reliable tools for common tasks.</p>
+                <h4 class="font-semibold text-lg mb-2">Example: `Math.max()`</h4>
+                <p class="text-gray-600 mb-4">A built-in tool to find the larger of two numbers.</p>
+                <div class="code-block">
+                    <pre><code><span class="comment">// Using a pre-built tool</span>
+<span class="keyword">int</span> largerNumber = Math.max(10, 20);
+System.out.println(largerNumber); <span class="comment">// Output: 20</span></code></pre>
+                </div>
+            </div>
+
+            <!-- User-Defined Methods Card -->
+            <div class="card">
+                 <div class="flex justify-center">
+                    <svg class="icon text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">User-Defined Methods</h3>
+                <p class="text-center text-gray-500 mb-4">(The Chef's Special Recipes)</p>
+                <p class="text-gray-600 mb-4">These are methods you, the programmer, create for a specific, custom task. They are your own unique recipes to make your code organized, readable, and reusable.</p>
+                <h4 class="font-semibold text-lg mb-2">Example: `greetChef()`</h4>
+                <p class="text-gray-600 mb-4">A custom recipe to print a special greeting.</p>
+                <div class="code-block">
+                    <pre><code><span class="comment">// Writing our own recipe</span>
+<span class="keyword">public static void</span> greetChef() {
+    System.out.println(<span class="string">"Hello, Chef Java!"</span>);
+}
+<span class="comment">// Now we can use our recipe</span>
+greetChef(); <span class="comment">// Output: Hello, Chef Java!</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Putting it all Together -->
+        <div class="card">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Chef Java's Full Program</h2>
+            <p class="text-gray-600 text-center mb-4">Here's how the chef uses both an appliance and a special recipe in the kitchen.</p>
+            <div class="code-block">
+<pre><code><span class="keyword">public class</span> Kitchen {
+
+    <span class="comment">// This is our special recipe (User-Defined Method)</span>
+    <span class="keyword">public static void</span> makeSignatureDish() {
+        System.out.println(<span class="string">"Preparing the special pasta..."</span>);
+    }
+
+    <span class="keyword">public static void</span> main(String[] args) {
+        <span class="comment">// Using our own recipe</span>
+        makeSignatureDish();
+
+        <span class="comment">// Using a built-in appliance (Inbuilt Method)</span>
+        <span class="keyword">double</span> temperature = Math.sqrt(144.0);
+        System.out.println(<span class="string">"Oven temperature is set to: "</span> + temperature);
+    }
+}</code></pre>
+            </div>
+             <div class="mt-4 text-center bg-gray-100 p-4 rounded-lg">
+                <h3 class="font-semibold text-gray-700">Output:</h3>
+                <pre class="text-gray-600 mt-2"><code>Preparing the special pasta...
+Oven temperature is set to: 12.0</code></pre>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

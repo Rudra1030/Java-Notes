@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number Checker in Java</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7fee7; /* A light green background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border-left: 4px solid #84cc16;
+        }
+        .code-block .comment {
+            color: #64748b;
+        }
+        .code-block .keyword {
+            color: #93c5fd;
+        }
+        .code-block .number {
+            color: #fbbf24;
+        }
+        .code-block .string {
+            color: #a5b4fc;
+        }
+        .logic-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .logic-step .number-circle {
+            background-color: #84cc16;
+            color: white;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Is the Number <span class="text-lime-600">Prime?</span></h1>
+            <p class="text-lg text-gray-600 mt-2">A simple Java guide to identifying prime numbers.</p>
+        </header>
+
+        <!-- What is a Prime Number? Card -->
+        <div class="card mb-8">
+            <div class="flex justify-center">
+                 <svg class="icon text-lime-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a12.06 12.06 0 00-4.5 0m3.75 2.311a12.06 12.06 0 01-4.5 0M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 text-center">What is a Prime Number?</h2>
+            <p class="text-gray-600 mt-4 text-center">A prime number is a whole number greater than 1 that has exactly two divisors: **1 and itself**.</p>
+            <div class="mt-4 bg-gray-50 p-4 rounded-lg text-center">
+                <p class="text-md text-gray-600"><strong>Prime Examples:</strong> 2, 3, 5, 7, 11, 13</p>
+                <p class="text-md text-gray-600 mt-1"><strong>Not Prime Examples:</strong> 4 (divisible by 2), 6 (divisible by 2 and 3), 9 (divisible by 3)</p>
+            </div>
+        </div>
+
+        <!-- The Logic Card -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">The Logic to Check</h2>
+            <div class="logic-step">
+                <div class="number-circle">1</div>
+                <p class="text-gray-600">Start with a number, `n`.</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">2</div>
+                <p class="text-gray-600">Loop from `i = 2` all the way to `n-1`.</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">3</div>
+                <p class="text-gray-600">In each loop, check if `n` is perfectly divisible by `i` (i.e., `n % i == 0`).</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">4</div>
+                <p class="text-gray-600">If you find even one number that divides `n` evenly, you can stop and say `n` is **not prime**.</p>
+            </div>
+             <div class="logic-step">
+                <div class="number-circle">5</div>
+                <p class="text-gray-600">If the loop finishes without finding any divisors, then `n` is **prime**!</p>
+            </div>
+        </div>
+
+
+        <!-- Java Code Section -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Java Program Implementation</h2>
+            <div class="code-block">
+                <pre><code><span class="keyword">public class</span> PrimeChecker {
+
+    <span class="comment">// A function to check if a number is prime</span>
+    <span class="keyword">public static boolean</span> isPrime(<span class="keyword">int</span> n) {
+        <span class="comment">// Corner case: Numbers less than 2 are not prime</span>
+        <span class="keyword">if</span> (n <= <span class="number">1</span>) {
+            <span class="keyword">return false</span>;
+        }
+
+        <span class="comment">// Check for divisors from 2 to n-1</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i < n; i++) {
+            <span class="comment">// If n is divisible by i, it's not prime</span>
+            <span class="keyword">if</span> (n % i == <span class="number">0</span>) {
+                <span class="keyword">return false</span>;
+            }
+        }
+
+        <span class="comment">// If no divisors were found, it is prime</span>
+        <span class="keyword">return true</span>;
+    }
+
+    <span class="keyword">public static void</span> main(String[] args) {
+        <span class="keyword">int</span> num1 = <span class="number">7</span>;
+        <span class="keyword">int</span> num2 = <span class="number">10</span>;
+
+        System.out.println(num1 + <span class="string">" is prime? "</span> + isPrime(num1));
+        System.out.println(num2 + <span class="string">" is prime? "</span> + isPrime(num2));
+    }
+}</code></pre>
+            </div>
+             <!-- Output Section -->
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Program Output</h3>
+                <div class="code-block w-full md:w-2/3 mx-auto text-left bg-gray-800 text-green-400">
+                    <pre><code>7 is prime? true
+10 is prime? false</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

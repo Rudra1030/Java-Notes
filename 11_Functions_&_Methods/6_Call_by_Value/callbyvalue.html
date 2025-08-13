@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java is Always Call by Value</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+        .code-block .comment {
+            color: #64748b;
+        }
+        .code-block .keyword {
+            color: #93c5fd;
+        }
+        .code-block .string {
+            color: #a5b4fc;
+        }
+        .story-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .story-step .number {
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Java is Always <span class="text-blue-600">Call by Value</span></h1>
+            <p class="text-lg text-gray-600 mt-2">Understanding how Java passes arguments to methods.</p>
+        </header>
+
+        <!-- Main Definition Card -->
+        <div class="card mb-8 text-center">
+            <div class="flex justify-center">
+                 <svg class="icon text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800">The Golden Rule</h2>
+            <p class="text-gray-600 mt-2">When you pass a variable to a method, the method receives a <strong class="text-blue-600">copy of the variable's value</strong>, not the original variable itself.</p>
+        </div>
+
+        <!-- How it Works Section -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Primitives Card -->
+            <div class="card">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">1. For Primitive Types</h3>
+                <p class="text-gray-600">For types like `int`, `double`, `char`, etc., the actual data value is copied. Changes made inside the method <strong class="text-red-500">do not affect</strong> the original variable.</p>
+            </div>
+            <!-- Objects Card -->
+            <div class="card">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2. For Objects</h3>
+                <p class="text-gray-600">The <strong class="text-blue-600">value of the reference</strong> (the memory address) is copied. This means the method's copy points to the <strong class="text-green-500">same original object</strong>.</p>
+            </div>
+        </div>
+
+        <!-- Code Example Section -->
+        <div class="card mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Example: The `Person` Object</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <!-- Code Block -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">The Code:</h3>
+                    <div class="code-block">
+                        <pre><code><span class="keyword">class</span> Person {
+    String name;
+}
+
+<span class="keyword">public class</span> Main {
+    <span class="keyword">public static void</span> main(String[] args) {
+        Person p1 = <span class="keyword">new</span> Person();
+        p1.name = <span class="string">"Abhay"</span>;
+
+        <span class="comment">// Try to change the name</span>
+        changeName(p1);
+        System.out.println(<span class="string">"After changeName: "</span> + p1.name);
+
+        <span class="comment">// Try to assign a new object</span>
+        newPerson(p1);
+        System.out.println(<span class="string">"After newPerson: "</span> + p1.name);
+    }
+
+    <span class="keyword">static void</span> changeName(Person p) {
+        <span class="comment">// This changes the original object's data</span>
+        p.name = <span class="string">"Rudra"</span>;
+    }
+
+    <span class="keyword">static void</span> newPerson(Person p) {
+        <span class="comment">// This points the local copy to a new object</span>
+        p = <span class="keyword">new</span> Person();
+        p.name = <span class="string">"Singh"</span>;
+    }
+}</code></pre>
+                    </div>
+                </div>
+                <!-- Explanation Story -->
+                <div>
+                     <h3 class="font-semibold text-lg mb-2">Step-by-Step Story:</h3>
+                     <div class="story-step">
+                        <div class="number">1</div>
+                        <p class="text-gray-600">A `Person` object is created. Its `name` is "Abhay". The variable `p1` holds its memory address.</p>
+                     </div>
+                     <div class="story-step">
+                        <div class="number">2</div>
+                        <p class="text-gray-600">In `changeName(p1)`, the method gets a <strong class="text-blue-600">copy of the address</strong>. It uses this to find the original object and change its name to "Rudra". <strong class="text-green-500">This works!</strong></p>
+                     </div>
+                     <div class="story-step">
+                        <div class="number">3</div>
+                        <p class="text-gray-600">In `newPerson(p1)`, the method gets another copy of the address. But then it reassigns its local copy to a <strong class="text-orange-500">brand new object</strong>. The original `p1` reference outside is untouched.</p>
+                     </div>
+                </div>
+            </div>
+             <!-- Output Section -->
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Final Output</h3>
+                <div class="code-block w-full md:w-1/2 mx-auto text-left">
+                    <p>After changeName: Rudra</p>
+                    <p>After newPerson: Rudra</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="card bg-blue-600 text-white">
+             <div class="flex justify-center">
+                <svg class="icon text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a12.06 12.06 0 00-4.5 0m3.75 2.311a12.06 12.06 0 01-4.5 0M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-center mb-4">Key Takeaway</h2>
+            <div class="flex flex-col md:flex-row justify-around text-center gap-4">
+                <p class="flex-1"><strong class="font-bold block text-lg">Change Object's Content?</strong><br>✅ Yes, the change is seen outside.</p>
+                <p class="flex-1"><strong class="font-bold block text-lg">Point to a New Object?</strong><br>❌ No, the change is NOT seen outside.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

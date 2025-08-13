@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Factorial in Java</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border-left: 4px solid #3b82f6;
+        }
+        .code-block .comment {
+            color: #64748b;
+        }
+        .code-block .keyword {
+            color: #93c5fd;
+        }
+        .code-block .number {
+            color: #fbbf24;
+        }
+        .code-block .string {
+            color: #a5b4fc;
+        }
+        .step-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .step-item .number-circle {
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Calculating a <span class="text-blue-600">Factorial</span> in Java</h1>
+            <p class="text-lg text-gray-600 mt-2">A simple guide to understanding and coding factorials.</p>
+        </header>
+
+        <!-- What is a Factorial? Card -->
+        <div class="card mb-8">
+            <div class="flex justify-center">
+                 <svg class="icon text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 01-6.23-.693L4.2 15.3m15.6 0c1.636 0 2.962 1.326 2.962 2.962s-1.326 2.962-2.962 2.962-2.962-1.326-2.962-2.962 1.326-2.962 2.962-2.962zM4.2 15.3c-1.636 0-2.962 1.326-2.962 2.962s1.326 2.962 2.962 2.962 2.962-1.326 2.962-2.962-1.326-2.962-2.962-2.962z" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 text-center">What is a Factorial?</h2>
+            <p class="text-gray-600 mt-4 text-center">A factorial, shown by the symbol `!`, is the product of all positive integers up to a given number.</p>
+            <div class="mt-4 bg-gray-100 p-4 rounded-lg text-center">
+                <p class="text-lg font-semibold text-gray-700">Formula: <code class="text-blue-600">n! = n × (n-1) × (n-2) × ... × 1</code></p>
+                <p class="text-md text-gray-600 mt-2">Example: <code class="text-blue-600">4! = 4 × 3 × 2 × 1 = 24</code></p>
+            </div>
+            <div class="mt-4 text-center">
+                <h3 class="font-semibold text-gray-700">Important Rules:</h3>
+                <p class="text-gray-600"><code class="text-red-500">1! = 1</code> and <code class="text-red-500">0! = 1</code> (by definition).</p>
+            </div>
+        </div>
+
+        <!-- Java Code Section -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Java Program for Factorial</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <!-- Code Block -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">The Code (Iterative Method):</h3>
+                    <div class="code-block">
+                        <pre><code><span class="keyword">public class</span> Factorial {
+    <span class="keyword">public static void</span> main(String[] args) {
+
+        <span class="keyword">int</span> number = <span class="number">5</span>; <span class="comment">// The number to find the factorial of</span>
+        <span class="keyword">long</span> factorial = <span class="number">1</span>; <span class="comment">// Use 'long' for larger results</span>
+
+        <span class="comment">// Loop from 1 to the number</span>
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i <= number; i++) {
+            factorial = factorial * i;
+        }
+
+        System.out.println(<span class="string">"Factorial of "</span> + number + <span class="string">" is: "</span> + factorial);
+    }
+}</code></pre>
+                    </div>
+                </div>
+                <!-- Code Breakdown -->
+                <div>
+                     <h3 class="font-semibold text-lg mb-2">Code Breakdown:</h3>
+                     <div class="step-item">
+                        <div class="number-circle">1</div>
+                        <p class="text-gray-600">We declare a `long` variable `factorial` and initialize it to `1`.</p>
+                     </div>
+                     <div class="step-item">
+                        <div class="number-circle">2</div>
+                        <p class="text-gray-600">A `for` loop runs from `i = 1` up to our target `number` (5).</p>
+                     </div>
+                     <div class="step-item">
+                        <div class="number-circle">3</div>
+                        <p class="text-gray-600">Inside the loop, we multiply the current `factorial` value by `i` and update it.</p>
+                     </div>
+                      <div class="step-item">
+                        <div class="number-circle">4</div>
+                        <p class="text-gray-600">After the loop finishes, the final result is printed.</p>
+                     </div>
+                </div>
+            </div>
+             <!-- Output Section -->
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Program Output</h3>
+                <div class="code-block w-full md:w-2/3 mx-auto text-left bg-gray-800 text-green-400">
+                    <pre><code>Factorial of 5 is: 120</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
