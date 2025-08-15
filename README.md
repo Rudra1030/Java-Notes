@@ -12,6 +12,10 @@ A comprehensive collection of Java programming notes and examples, organized for
 - **Inbuilt vs User-Defined Functions** - Java's built-in methods
 - **Function Overloading** - Polymorphism in Java methods
 - **Prime Number Check** - Algorithm to check prime numbers
+- **Prime Number Check (Advanced)** - Optimized prime checking algorithm
+- **Primes in Range** - Finding all prime numbers within a range
+- **Binary to Decimal** - Converting binary numbers to decimal
+- **Decimal to Binary** - Converting decimal numbers to binary
 
 ### Advanced Patterns
 - **Advanced Pattern Programming** - Complex pattern examples
@@ -56,8 +60,24 @@ Java Notes/
 │   │   └── notes.html
 │   ├── 11_Functions_Overloading/
 │   │   └── notes.html
-│   └── 12_Check_If_a_Number_is_Prime_or_Not/
-│       └── notes.html
+│   ├── 12_Check_If_a_Number_is_Prime_or_Not/
+│   │   ├── notes.html
+│   │   ├── PrimeCheck.java
+│   │   └── PrimeCheck.class
+│   ├── 13_Check_If_a_Number_is_Prime_or_Not_Advanced/
+│   │   ├── PrimeCheck.java
+│   │   └── PrimeCheck.class
+│   ├── 14_Primes_in_Range/
+│   │   ├── Prime.java
+│   │   └── Prime.class
+│   ├── 15_Binary_To_Decimal/
+│   │   ├── notes.html
+│   │   ├── code.java
+│   │   └── code.class
+│   └── 16_Decimal_to_Binary/
+│       ├── notes.html
+│       ├── code.java
+│       └── code.class
 └── 12_Patterns(Advanced)/
     └── [Advanced pattern examples]
 ```

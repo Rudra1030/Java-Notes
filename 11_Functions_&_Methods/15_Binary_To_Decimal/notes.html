@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Decimal Conversion in Java</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff; /* Light blue background */
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border-left: 4px solid #3b82f6;
+        }
+        .code-block .comment {
+            color: #64748b;
+        }
+        .code-block .keyword {
+            color: #93c5fd;
+        }
+        .code-block .number {
+            color: #fbbf24;
+        }
+        .code-block .string {
+            color: #a5b4fc;
+        }
+        .logic-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .logic-step .number-circle {
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Convert from <span class="text-blue-600">Binary to Decimal</span></h1>
+            <p class="text-lg text-gray-600 mt-2">Translating computer language to human language with Java.</p>
+        </header>
+
+        <!-- What is the Concept? Card -->
+        <div class="card mb-8">
+            <div class="flex justify-center">
+                 <svg class="icon text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 text-center">The Core Concept: Place Value</h2>
+            <p class="text-gray-600 mt-4 text-center">Each digit in a binary number has a "place value" which is a power of 2. To convert, you multiply each binary digit by its place value and add them all up.</p>
+            <div class="mt-4 bg-gray-50 p-4 rounded-lg text-center">
+                <p class="text-lg font-semibold text-gray-700">Example: Binary <code class="text-blue-600">101</code></p>
+                <p class="text-md text-gray-600 mt-2">
+                    ( <strong class="text-red-500">1</strong> × 2² ) + ( <strong class="text-green-500">0</strong> × 2¹ ) + ( <strong class="text-purple-500">1</strong> × 2⁰ )
+                    <br>= ( <strong class="text-red-500">1</strong> × 4 ) + ( <strong class="text-green-500">0</strong> × 2 ) + ( <strong class="text-purple-500">1</strong> × 1 )
+                    <br>= 4 + 0 + 1 = <strong class="text-blue-600">5</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- The Algorithm Card -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">The Algorithm Step-by-Step</h2>
+            <div class="logic-step">
+                <div class="number-circle">1</div>
+                <p class="text-gray-600">Start with two variables: `decimal = 0` and `power = 0`.</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">2</div>
+                <p class="text-gray-600">Loop as long as the binary number is greater than 0.</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">3</div>
+                <p class="text-gray-600">Inside the loop, get the last digit of the binary number (`lastDigit = binary % 10`).</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">4</div>
+                <p class="text-gray-600">Add `lastDigit * (2^power)` to your `decimal` total.</p>
+            </div>
+             <div class="logic-step">
+                <div class="number-circle">5</div>
+                <p class="text-gray-600">Increment the `power` by 1 and remove the last digit from the binary number (`binary = binary / 10`).</p>
+            </div>
+        </div>
+
+
+        <!-- Java Code Section -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Java Program Implementation</h2>
+            <div class="code-block">
+                <pre><code><span class="keyword">public class</span> BinaryToDecimal {
+
+    <span class="comment">// Function to convert binary to decimal</span>
+    <span class="keyword">public static void</span> binToDec(<span class="keyword">int</span> binNum) {
+        <span class="keyword">int</span> myNum = binNum; <span class="comment">// Store original number</span>
+        <span class="keyword">int</span> power = <span class="number">0</span>;
+        <span class="keyword">int</span> decNum = <span class="number">0</span>;
+
+        <span class="keyword">while</span> (binNum > <span class="number">0</span>) {
+            <span class="keyword">int</span> lastDigit = binNum % <span class="number">10</span>;
+            decNum += lastDigit * Math.pow(<span class="number">2</span>, power);
+            
+            power++;
+            binNum = binNum / <span class="number">10</span>;
+        }
+
+        System.out.println(<span class="string">"Decimal of "</span> + myNum + <span class="string">" is "</span> + decNum);
+    }
+
+    <span class="keyword">public static void</span> main(String[] args) {
+        binToDec(<span class="number">101</span>);  <span class="comment">// Example 1</span>
+        binToDec(<span class="number">1000</span>); <span class="comment">// Example 2</span>
+    }
+}</code></pre>
+            </div>
+             <!-- Output Section -->
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Program Output</h3>
+                <div class="code-block w-full md:w-2/3 mx-auto text-left bg-gray-800 text-green-400">
+                    <pre><code>Decimal of 101 is 5
+Decimal of 1000 is 8</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
