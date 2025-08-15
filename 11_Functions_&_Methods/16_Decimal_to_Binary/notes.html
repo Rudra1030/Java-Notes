@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decimal to Binary Conversion in Java</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border-left: 4px solid #f687b3;
+        }
+        .code-block .comment {
+            color: #a0aec0;
+        }
+        .code-block .keyword {
+            color: #90cdf4;
+        }
+        .code-block .number {
+            color: #f6ad55;
+        }
+        .code-block .string {
+            color: #b794f4;
+        }
+        .logic-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .logic-step .number-circle {
+            background: linear-gradient(135deg, #ed64a6 0%, #b794f4 100%);
+            color: white;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white text-shadow-lg">Convert from <span style="color: #f687b3;">Decimal to Binary</span></h1>
+            <p class="text-lg text-white mt-2">Translating human numbers into computer code with Java.</p>
+        </header>
+
+        <!-- What is the Concept? Card -->
+        <div class="card mb-8">
+            <div class="flex justify-center">
+                 <svg class="icon text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0011.667 0l3.181-3.183m-4.991-2.69l-3.182-3.182a8.25 8.25 0 00-11.667 0L2.985 16.644z" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 text-center">The Core Concept: Division and Remainders</h2>
+            <p class="text-gray-600 mt-4 text-center">To convert a decimal number to binary, you **repeatedly divide the number by 2** and record the remainder. The binary number is formed by taking all the remainders in **reverse order**.</p>
+            <div class="mt-4 bg-pink-50 p-4 rounded-lg text-center">
+                <p class="text-lg font-semibold text-gray-700">Example: Decimal <code class="text-pink-600">5</code></p>
+                <p class="text-md text-gray-600 mt-2">
+                    5 / 2 = 2, Remainder = <strong class="text-purple-600">1</strong><br>
+                    2 / 2 = 1, Remainder = <strong class="text-purple-600">0</strong><br>
+                    1 / 2 = 0, Remainder = <strong class="text-purple-600">1</strong><br>
+                    Reading remainders backwards: <strong class="text-pink-600">101</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- The Algorithm Card -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">The Algorithm Step-by-Step</h2>
+            <div class="logic-step">
+                <div class="number-circle">1</div>
+                <p class="text-gray-600">Start with a decimal number `n`.</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">2</div>
+                <p class="text-gray-600">Loop as long as `n` is greater than 0.</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">3</div>
+                <p class="text-gray-600">Inside the loop, find the remainder when `n` is divided by 2 (`rem = n % 2`).</p>
+            </div>
+            <div class="logic-step">
+                <div class="number-circle">4</div>
+                <p class="text-gray-600">Construct the binary number by adding the remainder at the correct place value.</p>
+            </div>
+             <div class="logic-step">
+                <div class="number-circle">5</div>
+                <p class="text-gray-600">Update `n` by dividing it by 2 (`n = n / 2`).</p>
+            </div>
+        </div>
+
+
+        <!-- Java Code Section -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Java Program Implementation</h2>
+            <div class="code-block">
+                <pre><code><span class="keyword">public class</span> DecimalToBinary {
+
+    <span class="comment">// Function to convert decimal to binary</span>
+    <span class="keyword">public static void</span> decToBin(<span class="keyword">int</span> n) {
+        <span class="keyword">int</span> myNum = n; <span class="comment">// Store original number</span>
+        <span class="keyword">int</span> power = <span class="number">0</span>;
+        <span class="keyword">int</span> binNum = <span class="number">0</span>;
+
+        <span class="keyword">while</span> (n > <span class="number">0</span>) {
+            <span class="keyword">int</span> remainder = n % <span class="number">2</span>;
+            binNum += remainder * Math.pow(<span class="number">10</span>, power);
+            
+            power++;
+            n = n / <span class="number">2</span>;
+        }
+
+        System.out.println(<span class="string">"Binary of "</span> + myNum + <span class="string">" is "</span> + binNum);
+    }
+
+    <span class="keyword">public static void</span> main(String[] args) {
+        decToBin(<span class="number">5</span>);  <span class="comment">// Example 1</span>
+        decToBin(<span class="number">8</span>); <span class="comment">// Example 2</span>
+    }
+}</code></pre>
+            </div>
+             <!-- Output Section -->
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Program Output</h3>
+                <div class="code-block w-full md:w-2/3 mx-auto text-left bg-gray-800 text-green-400">
+                    <pre><code>Binary of 5 is 101
+Binary of 8 is 1000</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
